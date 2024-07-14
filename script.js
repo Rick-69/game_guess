@@ -15,6 +15,29 @@ function startGame() {
     document.getElementById('guess').disabled = false;
 }
 
+function checkGuess() {
+    const userGuess = Number(document.getElementById('guess').value);
+    attempts++;
 
-// Start the game when the page loads
-window.onload = startGame;
+    if (userGuess < 1 || userGuess > 100) {
+        displayMessage('Please enter a number between 1 and 100.');
+        return;
+    }
+
+    guessHistory.push(userGuess);
+    updateHistory();
+
+    if (userGuess === randomNumber) {
+        displayMessage(`Congratulations! You guessed the number ${randomNumber} in ${attempts} attempts.`);
+        endGame();
+    } else {
+        maxAttempts--;
+        if (maxAttempts === 0) {
+            displayMessage(`Game over! The number was ${randomNumber}.`);
+            endGame();
+        } else {
+            provideHint(userGuess);
+            document.getElementById('attempts').innerText = `Attempts left: ${maxAttempts}`;
+        }
+    }
+}
