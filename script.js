@@ -1,3 +1,5 @@
+
+
 let randomNumber;
 let attempts;
 let maxAttempts;
@@ -14,6 +16,8 @@ function startGame() {
     document.getElementById('guess').value = '';
     document.getElementById('guess').disabled = false;
 }
+
+
 
 function checkGuess() {
     const userGuess = Number(document.getElementById('guess').value);
@@ -41,3 +45,27 @@ function checkGuess() {
         }
     }
 }
+
+
+function provideHint(userGuess) {
+    if (userGuess < randomNumber) {
+        displayMessage('Too low! Try again.');
+    } else {
+        displayMessage('Too high! Try again.');
+    }
+}
+
+function displayMessage(message) {
+    document.getElementById('result').innerText = message;
+}
+
+function updateHistory() {
+    document.getElementById('history').innerText = `Guess History: ${guessHistory.join(', ')}`;
+}
+
+function endGame() {
+    document.getElementById('guess').disabled = true;
+}
+
+// Start the game when the page loads
+window.onload = startGame;
