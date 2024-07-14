@@ -41,3 +41,15 @@ button:hover {
     background-color: #45a049;
     transform: scale(1.05);
 }
+
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f; /* Red color for feedback */
+}
+
+#attempts {
+    margin-top: 10px;
+    font-size: 18px;
+}
